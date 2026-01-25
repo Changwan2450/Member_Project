@@ -10,4 +10,10 @@ public interface MemberService {
     public Member login(Member member);
 
     public List<Member> getList();
+
+    public void deleteMember(String id);
+
+    public Member read(String id);
+
+    public void updateMember(Member member);
 }
