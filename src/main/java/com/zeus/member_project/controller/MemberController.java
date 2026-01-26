@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 @RequestMapping("/member")
-@RequiredArgsConstructor
+@RequiredArgsConstructor //Autowired 같은거 이게 보안상 더좋음 final 붙이기
 public class MemberController {
 
     private final MemberService service;

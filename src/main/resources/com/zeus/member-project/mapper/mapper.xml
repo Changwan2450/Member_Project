@@ -3,8 +3,8 @@
 <mapper namespace="com.zeus.member_project.mapper.MemberMapper">
 
     <insert id="insertMember">
-        INSERT INTO MEMBER (id, pw, name, age)
-        VALUES (#{id}, #{pw}, #{name}, #{age})
+        INSERT INTO MEMBER (id, pw, name, age, regdate)
+        VALUES (#{id}, #{pw}, #{name}, #{age}, SYSDATE)
     </insert>
 
     <select id="loginMember" resultType="com.zeus.member_project.domain.Member">

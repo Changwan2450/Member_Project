@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor //Autowired 같은거 이게 보안상 더좋음 final 붙이기
 public class MemberServiceImpl implements MemberService {
 
     private final MemberMapper mapper;
