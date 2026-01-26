@@ -2,41 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zeus.member_project.mapper.MemberMapper">
 
-    <insert id="insertMember">
+    <insert id="register">
         INSERT INTO MEMBER (id, pw, name, age, regdate)
         VALUES (#{id}, #{pw}, #{name}, #{age}, SYSDATE)
     </insert>
 
-    <select id="loginMember" resultType="com.zeus.member_project.domain.Member">
-        SELECT id, pw, name, age, auth, regdate
-        FROM MEMBER
-        WHERE id = #{id}
-          AND pw = #{pw}
+    <select id="login" resultType="com.zeus.member_project.domain.Member">
+        SELECT * FROM MEMBER WHERE id = #{id} AND pw = #{pw}
     </select>
 
-    <select id="getMemberList" resultType="com.zeus.member_project.domain.Member">
-        SELECT *
-        FROM MEMBER
-        ORDER BY regdate DESC
+    <select id="getList" resultType="com.zeus.member_project.domain.Member">
+        SELECT * FROM MEMBER ORDER BY regdate DESC
     </select>
 
     <delete id="deleteMember">
-        DELETE
-        FROM MEMBER
-        WHERE id = #{id}
+        DELETE FROM MEMBER WHERE id = #{id}
     </delete>
 
     <select id="read" resultType="com.zeus.member_project.domain.Member">
-        SELECT *
-        FROM MEMBER
-        WHERE id = #{id}
+        SELECT * FROM MEMBER WHERE id = #{id}
     </select>
 
     <update id="updateMember">
         UPDATE MEMBER
-        SET pw   = #{pw},
-            name = #{name},
-            age  = #{age}
+        SET pw = #{pw}, name = #{name}, age = #{age}
         WHERE id = #{id}
     </update>
+
 </mapper>
