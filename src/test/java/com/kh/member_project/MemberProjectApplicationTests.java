@@ -1,4 +1,4 @@
-package com.zeus.member_project;
+package com.kh.member_project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

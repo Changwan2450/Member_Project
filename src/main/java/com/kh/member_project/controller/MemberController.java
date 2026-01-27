@@ -1,7 +1,7 @@
-package com.zeus.member_project.controller;
+package com.kh.member_project.controller;
 
-import com.zeus.member_project.domain.Member;
-import com.zeus.member_project.service.MemberService;
+import com.kh.member_project.domain.Member;
+import com.kh.member_project.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

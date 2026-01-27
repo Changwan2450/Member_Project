@@ -1,4 +1,4 @@
-package com.zeus.member_project.domain;
+package com.kh.member_project.domain;
 
 import lombok.Data;
 

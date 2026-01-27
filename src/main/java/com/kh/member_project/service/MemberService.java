@@ -1,6 +1,6 @@
-package com.zeus.member_project.service;
+package com.kh.member_project.service;
 
-import com.zeus.member_project.domain.Member;
+import com.kh.member_project.domain.Member;
 import java.util.List;
 
 public interface MemberService {

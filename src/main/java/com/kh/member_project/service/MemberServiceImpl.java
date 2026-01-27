@@ -1,9 +1,8 @@
-package com.zeus.member_project.service;
+package com.kh.member_project.service;
 
-import com.zeus.member_project.domain.Member;
-import com.zeus.member_project.mapper.MemberMapper;
+import com.kh.member_project.domain.Member;
+import com.kh.member_project.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

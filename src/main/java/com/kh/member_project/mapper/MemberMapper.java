@@ -1,6 +1,6 @@
-package com.zeus.member_project.mapper;
+package com.kh.member_project.mapper;
 
-import com.zeus.member_project.domain.Member;
+import com.kh.member_project.domain.Member;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
