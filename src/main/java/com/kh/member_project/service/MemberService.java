@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface MemberService {
      void register(Member member);
-     Member login(Member member);
+     Member loginMember(Member member);
      List<Member> getList();
      void deleteMember(String id);
      Member read(String id);

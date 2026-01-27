@@ -2,6 +2,7 @@ package com.kh.member_project.controller;
 
 import com.kh.member_project.domain.Member;
 import com.kh.member_project.service.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -25,9 +26,28 @@ public class MemberController {
 
     @PostMapping("/register")
     public String register(Member member) {
+        // 'admin'이라는 아이디는 가입 불가!
+        if ("admin".equalsIgnoreCase(member.getId())) {
+            log.info("감히 관리자 아이디를 쓰려 하다니!");
+            return "redirect:/member/register?error=reserved";
+        }
         log.info("회원 가입: {}", member);
         service.register(member);
         return "redirect:/member/list";
+    }
+
+    @PostMapping("/login")
+    public String login(Member member, HttpSession session) {
+        Member loginUser = service.loginMember(member);
+
+        if (loginUser != null) {
+            // 2. 정보가 있다면? 그 객체를 'loginUser'라는 이름표를 붙여서 세션(사물함)에 저장!
+            session.setAttribute("loginUser", loginUser);
+            return "redirect:/food/list";
+        } else {
+            // 정보가 없으면 로그인 실패 처리
+            return "redirect:/member/login?error=y";
+        }
     }
 
     @GetMapping("/list")
