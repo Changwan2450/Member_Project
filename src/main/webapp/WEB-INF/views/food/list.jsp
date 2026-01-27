@@ -1,76 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%@ include file="/WEB-INF/views/food/includes/header.jsp" %>
-<div class="container">
-    <h1 class="text-center mb-4">🍲 우리 동네 맛집 리스트</h1>
 
-    <div class="d-flex justify-content-end mb-3">
-        <a href="/food/register" class="btn btn-register">✨ 새 음식 등록하기</a>
-    </div>
+<div class="container mt-4">
+    <h2 class="text-center fw-bold mb-4">🍱 우리 동네 황금 메뉴판</h2>
 
-    <table class="table table-hover text-center">
-        <thead>
-        <tr>
-            <th>No.</th>
-            <th>음식 이름</th>
-            <th>카테고리</th>
-            <th>가격</th>
-            <th>작성자</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="food" items="${list}">
+    <div class="card shadow-sm border-0">
+        <table class="table table-hover align-middle mb-0 text-center">
+            <thead class="table-dark">
             <tr>
-                <td><span class="badge bg-secondary">${food.foodId}</span></td>
-                <td class="fw-bold text-primary">${food.foodName}</td>
-                <td><span class="badge rounded-pill bg-info text-dark">${food.category}</span></td>
-                <td><strong>${food.price}원</strong></td>
-                <td class="text-muted">${food.memberId}</td>
-            </tr>
-        </c:forEach>
-        <table class="table table-hover text-center">
-            <thead>
-            <tr>
-                <th>No.</th>
-                <th>음식 이름</th>
-                <th>카테고리</th>
-                <th>가격</th>
-                <th>작성자</th>
-                <th>관리</th>
-                <%-- [추가 1] 헤더에 '관리' 칸 만들기 --%>
+                <th style="width: 8%">No.</th>
+                <th style="width: 35%">음식명</th>
+                <th style="width: 15%">카테고리</th>
+                <th style="width: 15%">가격</th>
+                <th style="width: 12%">작성자</th>
+                <th style="width: 15%">관리</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="food" items="${list}">
+            <c:forEach var="food" items="${foodList}">
                 <tr>
                     <td>${food.foodId}</td>
-                    <td>${food.foodName}</td>
-                    <td>${food.category}</td>
-                    <td>${food.price}원</td>
-                    <td>${food.memberId}</td>
-
-                        <%-- [추가 2] 데이터 행에 버튼 세트 넣기 --%>
+                    <td class="text-start ps-4">
+                        <a href="/food/read?foodId=${food.foodId}"
+                           class="text-decoration-none fw-bold text-dark">${food.foodName}</a>
+                    </td>
+                    <td><span class="badge bg-warning text-dark">${food.category}</span></td>
+                    <td class="fw-bold">${food.price}원</td>
+                    <td class="small text-secondary">${food.memberId}</td>
                     <td>
+                            <%-- 수정/삭제 버튼: 형의 컨트롤러 경로와 100% 일치 --%>
                         <div class="btn-group">
-                                <%-- 수정: foodId를 들고 컨트롤러의 GetMapping("/update")로 이동 --%>
-                            <a href="/food/update?foodId=${food.foodId}" class="btn btn-sm btn-outline-primary">수정</a>
-
-                                <%-- 삭제: foodId를 들고 컨트롤러의 GetMapping("/delete")로 이동 --%>
-                            <a href="/food/delete?foodId=${food.foodId}"
-                               class="btn btn-sm btn-outline-danger"
-                               onclick="return confirm('진짜 삭제할 거야, 형?')">삭제</a>
+                            <a href="/food/update?foodId=${food.foodId}"
+                               class="btn btn-sm btn-outline-primary px-2">수정</a>
+                            <a href="/food/delete?foodId=${food.foodId}" class="btn btn-sm btn-outline-danger px-2"
+                               onclick="return confirm('진짜 삭제 하시겠습니까?')">삭제</a>
                         </div>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-        </tbody>
-    </table>
-
-    <c:if test="${empty list}">
-        <p class="text-center text-muted">아직 등록된 맛집이 없어요. 첫 맛집을 등록해보세요!</p>
-    </c:if>
+    </div>
 </div>
+
 <%@ include file="/WEB-INF/views/food/includes/footer.jsp" %>

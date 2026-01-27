@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%-- 상단 조립 (폴더 구조에 맞춰서 경로 확인해줘!) --%>
 <%@ include file="includes/header.jsp" %>
 
 <div class="container" style="margin-top: 50px;">

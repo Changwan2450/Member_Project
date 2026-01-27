@@ -25,7 +25,7 @@ public class FoodController {
     @GetMapping("/list")
     public String foodList(Model model) {
         log.info("음식 리스트 출력,,");
-        model.addAttribute("list", foodService.getFoodList());
+        model.addAttribute("foodList", foodService.getFoodList());
         return "food/list";
     }
 
@@ -35,7 +35,7 @@ public class FoodController {
         log.info("음식 등록 화면으로 이동,,");
     }
 
-    // 2. DB에 저장하기
+    // 2. DB에 저장하기d
     @PostMapping("/register")
     public String register(Food food, HttpSession hs) {
         log.info("음식 등록 처리: {}, 세션등록: {}", food, hs); // 로그는 맨 위에 찍는 게 국룰!
@@ -48,7 +48,7 @@ public class FoodController {
             log.info("등록자 아이디 확인");
             food.setMemberId(user.getId());
         } else {
-            // [꿀팁] 로그인 안 했으면 등록 못 하게 로그인 페이지로 튕기기
+            // 로그인 안 했으면 등록 못 하게 로그인 페이지로 튕기기
             log.info("로그인 안 된 사용자");
             return "redirect:/member/login";
         }
@@ -60,21 +60,43 @@ public class FoodController {
     }
 
     @GetMapping("/delete")
-    public String deleteFood(long foodId) {
+    public String deleteFood(long foodId, HttpSession hs) {
+        Member user = (Member) hs.getAttribute("loginUser");
+
+        if (user == null || !"admin".equals(user.getId())) {
+            log.info("관리자만 삭제할 수 있습니다.");
+            return "redirect:/food/list?error=auth";
+        }
         log.info("회 원 삭 제 중,,");
         foodService.deleteFood(foodId);
         return "redirect:/food/list";
     }
 
+    // 🎯 수정 폼 열기 (관리자만 가능하게 입구 컷!)
     @GetMapping("/update")
-    public String updateFood(Model model, long foodId) {
-        log.info("회 원 수 정 페이지");
+    public String updateFood(Model model, long foodId, HttpSession hs) {
+        Member user = (Member) hs.getAttribute("loginUser");
+
+        // 로그인 안 했거나 admin이 아니면 쫓아냄
+        if (user == null || !"admin".equals(user.getId())) {
+            log.info("관리자 권한 없음: 수정 페이지 접근 불가");
+            return "redirect:/food/list?error=auth";
+        }
+
+        log.info("회 원 수 정 페이지 진입 (관리자 권한 확인됨)");
         model.addAttribute("update", foodService.readFood(foodId));
         return "food/update";
     }
 
+    // 수정 처리 (보안을 위해 여기서도 한번 더 체크하는 게 안전해!)
     @PostMapping("/update")
-    public String updateFood(Food food) {
+    public String updateFood(Food food, HttpSession hs) {
+        Member user = (Member) hs.getAttribute("loginUser");
+
+        if (user == null || !"admin".equals(user.getId())) {
+            return "redirect:/food/list?error=auth";
+        }
+
         log.info("회 원 수 정 중 : {}", food);
         foodService.updateFood(food);
         return "redirect:/food/list";

@@ -19,7 +19,7 @@
         WHERE foodId = #{foodId}
     </delete>
 
-    <select id="read" resultType="com.kh.member_project.domain.Food">
+    <select id="readFood" resultType="com.kh.member_project.domain.Food">
         SELECT *
         FROM FOOD
         WHERE foodId = #{foodId}
@@ -27,10 +27,10 @@
 
     <update id="updateFood">
         UPDATE FOOD
-        SET foodName = #{foodName},
-            price    = #{price},
-            category = #{category}
-        WHERE foodId = #{foodId}
+        SET FOODNAME = #{foodName},
+            PRICE    = #{price},
+            CATEGORY = #{category}
+        WHERE FOODID = #{foodId}
     </update>
 
 </mapper>
