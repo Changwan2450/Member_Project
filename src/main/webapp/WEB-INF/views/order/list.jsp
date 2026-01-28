@@ -24,7 +24,7 @@
                     <td class="fw-bold text-primary">${o.fno}</td>
                     <td>${o.id}</td>
                     <td class="fw-bold">${o.amount}개</td>
-                    <td class="small text-secondary">${o.orderdate}</td>
+                    <td class="small text-secondary">${o.regdate}</td>
                 </tr>
             </c:forEach>
 

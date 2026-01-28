@@ -9,9 +9,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
     private final BoardMapper boardMapper;
-
 
     @Override
     public void register(Board board) {
@@ -20,17 +19,19 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public List<Board> boardList() {
-        return List.of();
+
+        return boardMapper.boardList();
     }
 
     @Override
     public Board readBoard(int bno) {
-        return null;
+
+        return boardMapper.readBoard(bno);
     }
 
     @Override
     public void deleteBoard(int bno) {
-
+        boardMapper.deleteBoard(bno);
     }
 
     @Override
