@@ -4,8 +4,8 @@ import com.kh.member_project.domain.Order;
 import java.util.List;
 
 public interface OrderService {
-    public void register(Order order);
-    public List<Order> orderList();
-    public Order readOrder(int ono);
-    public void deleteOrder(int ono);
+     void register(Order order);
+     List<Order> orderList();
+     Order readOrder(int ono);
+     void deleteOrder(int ono);
 }

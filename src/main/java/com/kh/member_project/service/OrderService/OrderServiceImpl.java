@@ -4,6 +4,7 @@ import com.kh.member_project.domain.Order;
 import com.kh.member_project.mapper.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -14,20 +15,24 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void register(Order order) {
+        OrderMapper.insertOrder(order);
     }
 
     @Override
     public List<Order> orderList() {
-        return List.of();
+
+        return OrderMapper.getList();
     }
 
     @Override
     public Order readOrder(int ono) {
-        return null;
+
+        return OrderMapper.readOrder(ono);
     }
 
     @Override
     public void deleteOrder(int ono) {
+        OrderMapper.deleteOrder(ono);
     }
 
 }
