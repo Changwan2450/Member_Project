@@ -1,4 +1,4 @@
-package com.kh.member_project.service;
+package com.kh.member_project.service.FoodService;
 
 import com.kh.member_project.domain.Food;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.kh.member_project.service;
+package com.kh.member_project.service.MemberService;
 
 import com.kh.member_project.domain.Member;
 import com.kh.member_project.mapper.MemberMapper;

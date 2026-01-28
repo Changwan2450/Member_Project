@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.member_project.mapper.FoodMapper">
+
+    <insert id="insertFood">
+        INSERT INTO FOOD (foodId, foodName, price, category, memberId, regdate)
+        VALUES (FOOD_SEQ.NEXTVAL, #{foodName}, #{price}, #{category}, #{memberId}, SYSDATE)
+    </insert>
+
+    <select id="getFoodList" resultType="com.kh.member_project.domain.Food">
+        SELECT *
+        FROM FOOD
+        ORDER BY regdate DESC
+    </select>
+
+    <delete id="deleteFood">
+        DELETE
+        FROM FOOD
+        WHERE foodId = #{foodId}
+    </delete>
+
+    <select id="readFood" resultType="com.kh.member_project.domain.Food">
+        SELECT *
+        FROM FOOD
+        WHERE foodId = #{foodId}
+    </select>
+
+    <update id="updateFood">
+        UPDATE FOOD
+        SET FOODNAME = #{foodName},
+            PRICE    = #{price},
+            CATEGORY = #{category}
+        WHERE FOODID = #{foodId}
+    </update>
+
+</mapper>

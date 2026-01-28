@@ -29,12 +29,18 @@
                     <td class="fw-bold">${food.price}원</td>
                     <td class="small text-secondary">${food.memberId}</td>
                     <td>
-                            <%-- 수정/삭제 버튼: 형의 컨트롤러 경로와 100% 일치 --%>
                         <div class="btn-group">
-                            <a href="/food/update?foodId=${food.foodId}"
-                               class="btn btn-sm btn-outline-primary px-2">수정</a>
-                            <a href="/food/delete?foodId=${food.foodId}" class="btn btn-sm btn-outline-danger px-2"
-                               onclick="return confirm('진짜 삭제 하시겠습니까?')">삭제</a>
+                                <%-- 세션에 담긴 이름이 'loginUser'니까 그대로 써주기! --%>
+                            <c:if test="${loginUser.id == 'admin'}">
+                                <a href="/food/update?foodId=${food.foodId}"
+                                   class="btn btn-sm btn-outline-primary px-2">수정</a>
+                                <a href="/food/delete?foodId=${food.foodId}" class="btn btn-sm btn-outline-danger px-2"
+                                   onclick="return confirm('진짜 삭제 하시겠습니까?')">삭제</a>
+                            </c:if>
+
+                                <%-- 주문하기는 로그인한 사람이면 누구든(혹은 로그인 안 해도) 보여줄 거니까 그대로! --%>
+                            <a href="/order/orderRegister?fno=${food.foodId}"
+                               class="btn btn-sm btn-outline-success px-2">주문하기</a>
                         </div>
                     </td>
                 </tr>

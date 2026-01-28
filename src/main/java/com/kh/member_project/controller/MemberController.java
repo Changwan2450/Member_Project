@@ -1,7 +1,7 @@
 package com.kh.member_project.controller;
 
 import com.kh.member_project.domain.Member;
-import com.kh.member_project.service.MemberService;
+import com.kh.member_project.service.MemberService.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
