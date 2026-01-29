@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
@@ -35,7 +36,7 @@ public class FoodController {
         log.info("음식 등록 화면으로 이동,,");
     }
 
-    // 2. DB에 저장하기d
+    // 2. DB에 저장하기
     @PostMapping("/register")
     public String register(Food food, HttpSession hs) {
         log.info("음식 등록 처리: {}, 세션등록: {}", food, hs); // 로그는 맨 위에 찍는 게 국룰!
@@ -60,7 +61,7 @@ public class FoodController {
     }
 
     @GetMapping("/delete")
-    public String deleteFood(long foodId, HttpSession hs) {
+    public String deleteFood(@RequestParam("foodId") long foodId, HttpSession hs) {
         Member user = (Member) hs.getAttribute("loginUser");
 
         if (user == null || !"admin".equals(user.getId())) {

@@ -10,11 +10,13 @@
         <table class="table table-hover align-middle mb-0 text-center">
             <thead class="table-dark">
             <tr>
-                <th style="width: 15%">주문번호</th>
-                <th style="width: 15%">메뉴번호</th>
-                <th style="width: 25%">주문자ID</th>
-                <th style="width: 15%">수량</th>
+                <th style="width: 10%">주문번호</th>
+                <th style="width: 10%">메뉴번호</th>
+                <th style="width: 20%">메뉴이름</th>
+                <th style="width: 20%">주문자ID</th>
+                <th style="width: 10%">수량</th>
                 <th style="width: 30%">주문시간</th>
+                <th style="width: 15%">관리</th>
             </tr>
             </thead>
             <tbody>
@@ -22,16 +24,25 @@
                 <tr>
                     <td><span class="badge bg-light text-dark border">${o.ono}</span></td>
                     <td class="fw-bold text-primary">${o.fno}</td>
+                    <td>${o.foodName}</td>
                     <td>${o.id}</td>
                     <td class="fw-bold">${o.amount}개</td>
                     <td class="small text-secondary">${o.regdate}</td>
+                    <td>
+                            <%-- ★ 주문 삭제 버튼 추가! ono를 들고 컨트롤러로 감 --%>
+                        <a href="/order/delete?ono=${o.ono}"
+                           class="btn btn-sm btn-danger fw-bold"
+                           onclick="return confirm('이 주문 기록을 삭제하시겠습니까?')">
+                            삭제
+                        </a>
+                    </td>
                 </tr>
             </c:forEach>
 
             <%-- 주문 내역이 비어있을 때 --%>
             <c:if test="${empty ol}">
                 <tr>
-                    <td colspan="5" class="py-5 text-muted">
+                    <td colspan="7" class="py-5 text-muted">
                         <div class="fs-4">😅 아직 주문 내역이 없습니다.</div>
                         <a href="/food/list" class="btn btn-sm btn-outline-warning mt-3">첫 주문하러 가기</a>
                     </td>

@@ -31,11 +31,9 @@ public class OrderController {
 
     @PostMapping("/orderRegister")
     public String registerOrder(Order order, HttpSession session) {
+
         log.info("주문 처리 시작: " + order);
-
-        // 이제 그냥 Member라고만 불러도 돼! 깔끔하지?
         Member loginUser = (Member) session.getAttribute("loginUser");
-
         if (loginUser != null) {
             order.setId(loginUser.getId());
         } else {
@@ -50,8 +48,14 @@ public class OrderController {
 
     @GetMapping("/list")
     public String orderList(Model model) {
+        log.info("주문내역 출력중");
         model.addAttribute("ol", orderService.orderList());
         return "order/list";
     }
 
+    @GetMapping("/delete")
+    public String deleteOrder(@RequestParam("ono") long ono) {
+        orderService.deleteOrder(ono);
+        return "redirect:/order/list";
+    }
 }

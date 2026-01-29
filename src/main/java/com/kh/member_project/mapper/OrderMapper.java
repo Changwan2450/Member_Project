@@ -10,6 +10,7 @@ public interface OrderMapper {
     void insertOrder(Order order);
     List<Order> getList();
     Order readOrder(int ono);
-    void deleteOrder(int ono);
+    void deleteOrder(long ono);
+    void deleteOrdersByFno(long fno);
 
 }

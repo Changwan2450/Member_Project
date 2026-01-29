@@ -14,7 +14,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public void register(Board board) {
-
+      boardMapper.insertBoard(board);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public void updateBoard(Board board) {
-
+        boardMapper.updateBoard(board);
     }
 }

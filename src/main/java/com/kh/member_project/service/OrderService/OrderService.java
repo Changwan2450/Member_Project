@@ -7,5 +7,5 @@ public interface OrderService {
      void register(Order order);
      List<Order> orderList();
      Order readOrder(int ono);
-     void deleteOrder(int ono);
+     void deleteOrder(long ono);
 }

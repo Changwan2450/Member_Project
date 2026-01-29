@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%-- 형이 만든 헤더 가져오기! --%>
+
 <%@ include file="/WEB-INF/views/food/includes/header.jsp" %>
 
 <div class="container mt-5">
@@ -23,7 +23,7 @@
             </tr>
             </thead>
             <tbody>
-            <%-- ★ 여기 핵심! 컨트롤러에서 보낸 이름 'bList' --%>
+
             <c:forEach items="${bList}" var="board">
                 <tr>
                     <td>${board.bno}</td>
@@ -42,7 +42,7 @@
             <c:if test="${empty bList}">
                 <tr>
                     <td colspan="4" class="py-5 text-muted">
-                        아직 올라온 글이 없네 형? 첫 글의 주인공이 되어봐!
+                        아직 올라온 글이 없네 첫 글의 주인공이 되어봐!
                     </td>
                 </tr>
             </c:if>
@@ -54,7 +54,6 @@
 <%@ include file="/WEB-INF/views/food/includes/footer.jsp" %>
 
 <style>
-    /* 형의 커스텀 버튼 스타일 적용 */
     .custom-btn {
         height: 40px;
         display: inline-flex;

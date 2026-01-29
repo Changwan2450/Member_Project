@@ -3,6 +3,7 @@ package com.kh.member_project.controller;
 import com.kh.member_project.domain.Board;
 import com.kh.member_project.service.BoardService.BoardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @Controller
+@Slf4j
 @RequestMapping("/board")
 public class BoardController {
 
@@ -22,8 +24,9 @@ public class BoardController {
 
     @PostMapping("/register")
     public String register(Board board){
+        log.info("입력받은 게시글 데이터 {}", board);
         boardService.register(board);
-        return "redirect:/board/register";
+        return "redirect:/board/list";
     }
 
     @GetMapping("/list")
@@ -49,6 +52,7 @@ public class BoardController {
 
     @PostMapping("/modify")
     public String modifyB(Board board){
+        log.info("수정한내용 {}", board);
         boardService.updateBoard(board);
         return "redirect:/board/list";
     }

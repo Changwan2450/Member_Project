@@ -30,7 +30,6 @@
                     <td class="small text-secondary">${food.memberId}</td>
                     <td>
                         <div class="btn-group">
-                                <%-- 세션에 담긴 이름이 'loginUser'니까 그대로 써주기! --%>
                             <c:if test="${loginUser.id == 'admin'}">
                                 <a href="/food/update?foodId=${food.foodId}"
                                    class="btn btn-sm btn-outline-primary px-2">수정</a>

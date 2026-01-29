@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void deleteOrder(int ono) {
+    public void deleteOrder(long ono) {
         OrderMapper.deleteOrder(ono);
     }
 

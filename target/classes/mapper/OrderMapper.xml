@@ -31,9 +31,4 @@
         WHERE ono = #{ono}
     </delete>
 
-    <delete id="deleteOrdersByFno">
-        DELETE
-        FROM ORDERS
-        WHERE fno = #{fno}
-    </delete>
 </mapper>

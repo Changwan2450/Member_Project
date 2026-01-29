@@ -9,4 +9,5 @@ public class Order {
     private String id;
     private int amount;
     private String regdate;
+    private String foodName;
 }
