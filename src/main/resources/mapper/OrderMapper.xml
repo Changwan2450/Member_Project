@@ -8,9 +8,15 @@
     </insert>
 
     <select id="getList" resultType="com.kh.member_project.domain.Order">
-        SELECT ono, fno, id, amount, regdate
-        FROM ORDERS
-        ORDER BY ono DESC
+        SELECT o.ono,
+               o.fno,
+               o.id,
+               o.amount,
+               o.regdate,
+               f.foodName
+        FROM ORDERS o
+                 INNER JOIN FOOD f ON o.fno = f.foodId
+        ORDER BY o.ono DESC
     </select>
 
     <select id="readOrder" resultType="com.kh.member_project.domain.Order">
