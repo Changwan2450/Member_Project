@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
     void insertBoard(Board board);
-    List<Board> boardList();
+    List<Board> boardList(String keyword);
     Board readBoard(int bno);
     void deleteBoard(int bno);
     void updateBoard(Board board);

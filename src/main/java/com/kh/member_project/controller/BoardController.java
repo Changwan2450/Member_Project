@@ -30,8 +30,9 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public void boardList(Model model){
-        model.addAttribute("bList", boardService.boardList());
+    public void boardList(Model model, @RequestParam(value="keyword",required = false) String keyword){
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("bList", boardService.boardList(keyword));
     }
 
     @GetMapping("/read")

@@ -6,6 +6,31 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold m-0">📝 자유 게시판</h2>
+        <%-- 검색창 영역 시작 --%>
+        <div class="d-flex justify-content-center mb-4">
+            <form action="/board/list" method="get" class="d-flex gap-2" style="max-width: 500px; width: 100%;">
+                <%-- 검색어 입력창: value에 ${keyword}를 넣어야 검색 후에도 글자가 남음! --%>
+                <input type="text" name="keyword" value="${keyword}"
+                       class="form-control border-2 border-dark"
+                       placeholder="제목, 내용, 작성자 검색..."
+                       style="border-radius: 8px;">
+
+                <%-- 검색 버튼 --%>
+                <button type="submit" class="custom-btn"
+                        style="background: #000; color: #fff !important; white-space: nowrap;">
+                    검색
+                </button>
+
+                <%-- 검색어 있을 때만 나타나는 초기화 버튼 --%>
+                <c:if test="${not empty keyword}">
+                    <a href="/board/list" class="custom-btn"
+                       style="background: #eee; color: #000 !important; white-space: nowrap;">
+                        초기화
+                    </a>
+                </c:if>
+            </form>
+        </div>
+        <%-- 검색창 영역 끝 --%>
         <%-- 글쓰기 버튼 --%>
         <a href="/board/register" class="custom-btn" style="background: #FFC107; color: #000 !important;">
             글쓰기

@@ -12,6 +12,13 @@
     <select id="boardList" resultType="com.kh.member_project.domain.Board">
         SELECT bno, title, writer, content, regdate
         FROM TBL_BOARD
+        <where>
+            <if test="keyword != null and keyword != ''">
+                (title LIKE '%' || #{keyword} || '%'
+                OR content LIKE '%' || #{keyword} || '%'
+                OR writer LIKE '%' || #{keyword} || '%')
+            </if>
+        </where>
         ORDER BY bno DESC
     </select>
 

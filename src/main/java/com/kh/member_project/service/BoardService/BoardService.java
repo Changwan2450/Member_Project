@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BoardService {
     void register(Board board);
-    List<Board> boardList();
+    List<Board> boardList(String keyword);
     Board readBoard(int bno);
     void deleteBoard(int bno);
     void updateBoard(Board board);
