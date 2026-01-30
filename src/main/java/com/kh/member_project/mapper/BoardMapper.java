@@ -9,7 +9,7 @@ import java.util.List;
 public interface BoardMapper {
     void insertBoard(Board board);
     List<Board> boardList(String keyword);
-    Board readBoard(int bno);
-    void deleteBoard(int bno);
+    Board readBoard(long bno);
+    void deleteBoard(long bno);
     void updateBoard(Board board);
 }

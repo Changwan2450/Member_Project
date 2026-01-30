@@ -6,11 +6,15 @@ com/kh/member_project/service/FoodService/FoodServiceImpl.class
 com/kh/member_project/service/OrderService/OrderServiceImpl.class
 com/kh/member_project/domain/Member.class
 com/kh/member_project/mapper/BoardMapper.class
+com/kh/member_project/controller/api/RestMemberController.class
 com/kh/member_project/service/MemberService/MemberService.class
 com/kh/member_project/mapper/OrderMapper.class
 com/kh/member_project/domain/Board.class
 com/kh/member_project/service/OrderService/OrderService.class
 com/kh/member_project/service/MemberService/MemberServiceImpl.class
+com/kh/member_project/controller/api/RestOrderController.class
+com/kh/member_project/controller/api/RestBoardController.class
+com/kh/member_project/controller/RestFoodController.class
 com/kh/member_project/service/BoardService/BoardService.class
 com/kh/member_project/controller/FoodController.class
 com/kh/member_project/service/FoodService/FoodService.class

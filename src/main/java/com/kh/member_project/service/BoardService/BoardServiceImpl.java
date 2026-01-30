@@ -24,13 +24,13 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Board readBoard(int bno) {
+    public Board readBoard(long bno) {
 
         return boardMapper.readBoard(bno);
     }
 
     @Override
-    public void deleteBoard(int bno) {
+    public void deleteBoard(long bno) {
         boardMapper.deleteBoard(bno);
     }
 

@@ -34,9 +34,12 @@
 
     <update id="updateMember">
         UPDATE MEMBER
-        SET pw   = #{pw},
-            name = #{name},
-            age  = #{age}
+        <set>
+            <if test="pw != null and pw != ''">pw = #{pw},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="auth != null and auth != ''">auth = #{auth}</if>
+        </set>
         WHERE id = #{id}
     </update>
 
