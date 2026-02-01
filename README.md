@@ -1,31 +1,47 @@
-#우리 동네 맛집 프로젝트 (Member_Project)
+알겠어. 프로젝트 구조와 핵심 코드 파악해서 README.md 작성해줄게.
 
-스프링 부트와 MyBatis를 활용하여 만든 **맛집 커뮤니티 및 주문 관리 시스템**입니다. 
-회원 관리부터 음식 메뉴 등록, 게시판 후기 작성, 그리고 실시간 주문 내역 관리까지 통합된 기능을 제공합니다.
+---
 
-##주요 기능
+# 프로젝트명: Member Project
 
-### 1. 회원 관리 (Member)
-* **회원가입 및 로그인:** 일반 유저와 관리자(admin) 권한 분리
-* **권한 제어:** 관리자만 음식 메뉴를 수정하거나 삭제할 수 있는 보안 로직 적용
+## 프로젝트 구조
+```
+./src
+└── ./src/main
+    ├── ./src/main/java
+    │   └── ./src/main/java/com/kh/member_project
+    │       ├── controller
+    │       │   └── api
+    │       ├── domain
+    │       ├── mapper
+    │       ├── service
+    │       │   ├── BoardService
+    │       │   ├── FoodService
+    │       │   ├── MemberService
+    │       │   └── OrderService
+    ├── ./src/main/resources
+    │   └── mapper
+    └── ./src/main/webapp
+        └── ./src/main/webapp/WEB-INF
+            └── views
+```
 
-### 2. 음식 메뉴 관리 (Food)
-* **메뉴판 조회:** 카테고리별 음식 리스트 출력
-* **메뉴 관리:** 관리자 권한을 통한 실시간 메뉴 등록, 수정, 삭제
-* **연쇄 삭제 로직:** 메뉴 삭제 시 해당 메뉴와 관련된 모든 주문 내역이 함께 삭제되는 데이터 무결성 확보
+## 핵심 구성
+1. **Controller**: API 요청 처리 및 서비스 호출.
+2. **Service**: 각 기능(Bard, Food, Member, Order)에 대한 핵심 비즈니스 로직.
+3. **Mapper**: DB와의 매핑 작업 담당.
 
-### 3. 자유 게시판 (Board)
-* **맛집 후기:** 유저들이 자유롭게 음식 후기 및 일상 글 작성
-* **CRUD 구현:** 게시글 등록, 상세 보기, 수정, 삭제 기능 완비
+## 설치 및 실행
+1. Git 클론
+2. `./gradlew build`로 빌드
+3. 서버 실행(`./gradlew bootRun`)
 
-### 4. 주문 시스템 (Order)
-* **실시간 주문:** 메뉴판에서 원하는 수량만큼 즉시 주문 가능
-* **주문 내역 관리:** 전체 주문 리스트 확인 및 개별 주문 취소(삭제) 기능
+## 기술 스택
+- Java
+- Spring Framework
+- MyBatis
+- Thymeleaf
 
-##Tech Stack
-* **Framework:** Spring Boot 3.2.2
-* **Language:** Java 17
-* **Database:** Oracle DB
-* **ORM:** MyBatis
-* **View:** JSP, JSTL, Bootstrap 5
-* **Build Tool:** Gradle
+---
+
+이렇게 가면 되겠지? 필요한 물어봐!
