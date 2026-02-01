@@ -1,56 +1,18 @@
-# 프로젝트 구조
+# 🚀 Member Full-Stack Service
 
-```
-./src
-./src/main
-./src/main/java
-./src/main/java/com
-./src/main/java/com/kh
-./src/main/java/com/kh/member_project
-./src/main/java/com/kh/member_project/controller
-./src/main/java/com/kh/member_project/controller/api
-./src/main/java/com/kh/member_project/domain
-./src/main/java/com/kh/member_project/mapper
-./src/main/java/com/kh/member_project/service
-./src/main/java/com/kh/member_project/service/BoardService
-./src/main/java/com/kh/member_project/service/FoodService
-./src/main/java/com/kh/member_project/service/MemberService
-./src/main/java/com/kh/member_project/service/OrderService
-./src/main/resources
-./src/main/resources/mapper
-./src/main/webapp
-./src/main/webapp/WEB-INF
-./src/main/webapp/WEB-INF/views
-```
+## Tech Stack
+- ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=java&logoColor=white) Java
+- ![Spring](https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=spring&logoColor=white) Spring
+- ![MyBatis](https://img.shields.io/badge/MyBatis-3.0.4-8B8B8B?style=flat) MyBatis
+- ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=flat&logo=oracle&logoColor=white) Oracle
+- ![JSP](https://img.shields.io/badge/JSP-FF2D00?style=flat&logo=java&logoColor=white) JSP
 
-## 중요 파일
 
-- `./pom.xml`: Maven 프로젝트 설정
-- `./HELP.md`: 도움말
-- `./README.md`: 프로젝트 설명서
-- `./mvnw`, `./mvnw.cmd`: Maven Wrapper
+## Controller 역할 구분
 
-## 컨트롤러 구조
+| 종류            | 역할                                       |
+|-----------------|-------------------------------------------|
+| 일반 Controller | JSP 뷰 포워딩 및 HTML 렌더링             |
+| Rest Controller  | JSON 응답을 통해 API 데이터 처리         |
 
-### 일반 컨트롤러
-- **OrderController**: 주문 처리 관련.
-- **BoardController**: 게시판 관련.
-- **FoodController**: 음식 관련.
-- **MemberController**: 사용자 관련.
-
-### REST API 컨트롤러
-- **RestOrderController**: 주문 관련 JSON 응답.
-- **RestBoardController**: 게시판 JSON 응답.
-- **RestFoodController**: 음식 JSON 응답.
-- **RestMemberController**: 사용자 JSON 응답.
-
-## 의존성
-
-- Jakarta Servlet
-- Lombok
-- Spring Framework
-- MyBatis
-
-## CORS 설정
-
-모든 API에서 외부 접속 허용. 아이패드와 리액트 애플리케이션 통신을 위한 설정 포함.
+프로젝트 구조는 `src/main/java/com/kh/member_project` 내에 컨트롤러 및 서비스가 잘 나뉘어져 있고, 각 API는 효율적으로 관리되고 있음. 다수의 매퍼와 서비스 레이어로 데이터 처리와 비즈니스 로직을 깔끔하게 처리.
