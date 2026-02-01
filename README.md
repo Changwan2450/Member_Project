@@ -1,47 +1,56 @@
-알겠어. 프로젝트 구조와 핵심 코드 파악해서 README.md 작성해줄게.
+# 프로젝트 구조
 
----
-
-# 프로젝트명: Member Project
-
-## 프로젝트 구조
 ```
 ./src
-└── ./src/main
-    ├── ./src/main/java
-    │   └── ./src/main/java/com/kh/member_project
-    │       ├── controller
-    │       │   └── api
-    │       ├── domain
-    │       ├── mapper
-    │       ├── service
-    │       │   ├── BoardService
-    │       │   ├── FoodService
-    │       │   ├── MemberService
-    │       │   └── OrderService
-    ├── ./src/main/resources
-    │   └── mapper
-    └── ./src/main/webapp
-        └── ./src/main/webapp/WEB-INF
-            └── views
+./src/main
+./src/main/java
+./src/main/java/com
+./src/main/java/com/kh
+./src/main/java/com/kh/member_project
+./src/main/java/com/kh/member_project/controller
+./src/main/java/com/kh/member_project/controller/api
+./src/main/java/com/kh/member_project/domain
+./src/main/java/com/kh/member_project/mapper
+./src/main/java/com/kh/member_project/service
+./src/main/java/com/kh/member_project/service/BoardService
+./src/main/java/com/kh/member_project/service/FoodService
+./src/main/java/com/kh/member_project/service/MemberService
+./src/main/java/com/kh/member_project/service/OrderService
+./src/main/resources
+./src/main/resources/mapper
+./src/main/webapp
+./src/main/webapp/WEB-INF
+./src/main/webapp/WEB-INF/views
 ```
 
-## 핵심 구성
-1. **Controller**: API 요청 처리 및 서비스 호출.
-2. **Service**: 각 기능(Bard, Food, Member, Order)에 대한 핵심 비즈니스 로직.
-3. **Mapper**: DB와의 매핑 작업 담당.
+## 중요 파일
 
-## 설치 및 실행
-1. Git 클론
-2. `./gradlew build`로 빌드
-3. 서버 실행(`./gradlew bootRun`)
+- `./pom.xml`: Maven 프로젝트 설정
+- `./HELP.md`: 도움말
+- `./README.md`: 프로젝트 설명서
+- `./mvnw`, `./mvnw.cmd`: Maven Wrapper
 
-## 기술 스택
-- Java
+## 컨트롤러 구조
+
+### 일반 컨트롤러
+- **OrderController**: 주문 처리 관련.
+- **BoardController**: 게시판 관련.
+- **FoodController**: 음식 관련.
+- **MemberController**: 사용자 관련.
+
+### REST API 컨트롤러
+- **RestOrderController**: 주문 관련 JSON 응답.
+- **RestBoardController**: 게시판 JSON 응답.
+- **RestFoodController**: 음식 JSON 응답.
+- **RestMemberController**: 사용자 JSON 응답.
+
+## 의존성
+
+- Jakarta Servlet
+- Lombok
 - Spring Framework
 - MyBatis
-- Thymeleaf
 
----
+## CORS 설정
 
-이렇게 가면 되겠지? 필요한 물어봐!
+모든 API에서 외부 접속 허용. 아이패드와 리액트 애플리케이션 통신을 위한 설정 포함.
