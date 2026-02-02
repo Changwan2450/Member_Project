@@ -24,7 +24,6 @@ public class BoardController {
 
     @PostMapping("/register")
     public String register(Board board){
-        log.info("입력받은 게시글 데이터 {}", board);
         boardService.register(board);
         return "redirect:/board/list";
     }
@@ -53,7 +52,6 @@ public class BoardController {
 
     @PostMapping("/modify")
     public String modifyB(Board board){
-        log.info("수정한내용 {}", board);
         boardService.updateBoard(board);
         return "redirect:/board/list";
     }

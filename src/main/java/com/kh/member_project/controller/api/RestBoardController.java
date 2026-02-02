@@ -20,21 +20,18 @@ public class RestBoardController {
     // 1. 게시글 목록 (리액트에서 refreshBoard 실행 시 호출됨)
     @GetMapping("/list")
     public List<Board> boardList(@RequestParam(value = "keyword", required = false) String keyword) {
-        log.info("게시판 목록 요청 들어옴, 검색어: {}", keyword);
         return boardService.boardList(keyword);
     }
 
     // 2. 게시글 상세 (리액트에서 handleBoardRead 실행 시 호출됨)
     @GetMapping("/read/{bno}")
     public Board readBoard(@PathVariable("bno") int bno) {
-        log.info("{}번 글 상세 요청", bno);
         return boardService.readBoard(bno);
     }
 
     // 3. 게시글 등록 (리액트에서 handleBoardWrite 실행 시 호출됨)
     @PostMapping("/register")
     public String register(@RequestBody Board board) { // @RequestBody가 JSON을 자바 객체로 바꿔줌
-        log.info("새 글 등록: {}", board);
         boardService.register(board);
         return "success";
     }
@@ -52,7 +49,6 @@ public class RestBoardController {
 
     @PutMapping("/update")
     public String update(@RequestBody Board board, @RequestParam String userId) {
-        log.info("글 수정 요청 bno: {}, 요청자: {}", board.getBno(), userId);
 
         // 원본 글 읽어와서 작성자 대조 (readBoard도 파라미터 Long으로 되어있어야 함)
         Board origin = boardService.readBoard(board.getBno());

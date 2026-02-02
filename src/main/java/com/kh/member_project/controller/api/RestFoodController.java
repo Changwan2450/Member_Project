@@ -26,7 +26,6 @@ public class RestFoodController {
     // 2. 등록 (POST)
     @PostMapping("/register")
     public String register(@RequestBody Food food) {
-        log.info("리액트에서 온 데이터: {}", food);
         // 지금은 세션이 없으니 임시로 admin 세팅
         if (food.getMemberId() == null) food.setMemberId("admin");
         foodService.addFood(food);
@@ -36,7 +35,6 @@ public class RestFoodController {
     // 3. 삭제 (DELETE)
     @DeleteMapping("/delete/{foodId}")
     public String delete(@PathVariable("foodId") Long foodId) {
-        log.info("삭제 요청 ID: {}", foodId);
         foodService.deleteFood(foodId);
         return "success";
     }
@@ -44,7 +42,6 @@ public class RestFoodController {
     // RestFoodController.java에 추가
     @PutMapping("/update")
     public String update(@RequestBody Food food) {
-        log.info("수정 요청 데이터: {}", food);
         foodService.updateFood(food);
         return "success";
     }

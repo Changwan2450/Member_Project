@@ -25,14 +25,12 @@ public class OrderController {
 
     @GetMapping("/orderRegister")
     public void registerOrder(@RequestParam("fno") int fno, Model model) {
-        log.info("주문화면 로딩");
         model.addAttribute("fno", fno);
     }
 
     @PostMapping("/orderRegister")
     public String registerOrder(Order order, HttpSession session) {
 
-        log.info("주문 처리 시작: " + order);
         Member loginUser = (Member) session.getAttribute("loginUser");
         if (loginUser != null) {
             order.setId(loginUser.getId());
@@ -40,7 +38,6 @@ public class OrderController {
             return "redirect:/member/login";
         }
 
-        log.info("DB로 던지기 직전 데이터: " + order);
         orderService.register(order);
 
         return "redirect:/order/list";
@@ -48,7 +45,6 @@ public class OrderController {
 
     @GetMapping("/list")
     public String orderList(Model model) {
-        log.info("주문내역 출력중");
         model.addAttribute("ol", orderService.orderList());
         return "order/list";
     }

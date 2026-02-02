@@ -25,7 +25,6 @@ public class FoodController {
     // 0. 음식 리스트 출력
     @GetMapping("/list")
     public String foodList(Model model) {
-        log.info("음식 리스트 출력,,");
         model.addAttribute("foodList", foodService.getFoodList());
         return "food/list";
     }
@@ -33,24 +32,20 @@ public class FoodController {
     // 1. 등록 폼 화면 띄우기
     @GetMapping("/register")
     public void registerForm() {
-        log.info("음식 등록 화면으로 이동,,");
     }
 
     // 2. DB에 저장하기
     @PostMapping("/register")
     public String register(Food food, HttpSession hs) {
-        log.info("음식 등록 처리: {}, 세션등록: {}", food, hs); // 로그는 맨 위에 찍는 게 국룰!
 
         // 1. 세션(사물함)에서 로그인한 유저 정보 꺼내기
         Member user = (Member) hs.getAttribute("loginUser");
 
         // 2. 로그인 상태라면, 그 유저의 ID를 음식 객체에 작성자로 세팅
         if (user != null) {
-            log.info("등록자 아이디 확인");
             food.setMemberId(user.getId());
         } else {
             // 로그인 안 했으면 등록 못 하게 로그인 페이지로 튕기기
-            log.info("로그인 안 된 사용자");
             return "redirect:/member/login";
         }
 
@@ -65,10 +60,8 @@ public class FoodController {
         Member user = (Member) hs.getAttribute("loginUser");
 
         if (user == null || !"admin".equals(user.getId())) {
-            log.info("관리자만 삭제할 수 있습니다.");
             return "redirect:/food/list?error=auth";
         }
-        log.info("회 원 삭 제 중,,");
         foodService.deleteFood(foodId);
         return "redirect:/food/list";
     }
@@ -80,11 +73,9 @@ public class FoodController {
 
         // 로그인 안 했거나 admin이 아니면 쫓아냄
         if (user == null || !"admin".equals(user.getId())) {
-            log.info("관리자 권한 없음: 수정 페이지 접근 불가");
             return "redirect:/food/list?error=auth";
         }
 
-        log.info("회 원 수 정 페이지 진입 (관리자 권한 확인됨)");
         model.addAttribute("update", foodService.readFood(foodId));
         return "food/update";
     }
@@ -98,7 +89,6 @@ public class FoodController {
             return "redirect:/food/list?error=auth";
         }
 
-        log.info("회 원 수 정 중 : {}", food);
         foodService.updateFood(food);
         return "redirect:/food/list";
     }

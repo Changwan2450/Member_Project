@@ -21,7 +21,6 @@ public class RestOrderController {
     // 주문하기 (Create)
     @PostMapping("/register")
     public String register(@RequestBody Order order) {
-        log.info("리액트 주문 요청: {}", order);
         orderService.register(order);
         return "success";
     }
