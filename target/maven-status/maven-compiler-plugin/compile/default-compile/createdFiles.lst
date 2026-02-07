@@ -19,6 +19,7 @@ com/kh/member_project/service/BoardService/BoardService.class
 com/kh/member_project/controller/FoodController.class
 com/kh/member_project/service/FoodService/FoodService.class
 com/kh/member_project/domain/Order.class
+com/kh/member_project/common/aop/ControllerLogAdvice.class
 com/kh/member_project/MemberProjectApplication.class
 com/kh/member_project/controller/BoardController.class
 com/kh/member_project/mapper/FoodMapper.class
